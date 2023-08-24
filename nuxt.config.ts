@@ -27,11 +27,6 @@ export default defineNuxtConfig({
         fontFamily: {
           lexend: ["Lexend", "sans-serif"],
         },
-        colors: {
-          primary: '#010409',
-          secondary: '#010409',
-          away: '#0d1017'
-        }
       },
       plugins: [require("tailwind-scrollbar-hide")],
     },
