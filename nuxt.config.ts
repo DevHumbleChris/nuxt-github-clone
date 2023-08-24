@@ -11,12 +11,13 @@ export default defineNuxtConfig({
     provider: {
       type: "authjs",
     },
-    // globalAppMiddleware: true,
+    globalAppMiddleware: true,
   },
   runtimeConfig: {
     public: {
       GITHUB_CLIENT_ID: process.env.NUXT_GITHUB_CLIENT_ID,
       GITHUB_CLIENT_SECRET: process.env.NUXT_GITHUB_CLIENT_SECRET,
+      NUXT_AUTH_SECRET: process.env.NUXT_AUTH_SECRET
     },
   },
   tailwindcss: {
@@ -25,6 +26,11 @@ export default defineNuxtConfig({
       theme: {
         fontFamily: {
           lexend: ["Lexend", "sans-serif"],
+        },
+        colors: {
+          primary: '#010409',
+          secondary: '#010409',
+          away: '#0d1017'
         }
       },
       plugins: [require("tailwind-scrollbar-hide")],

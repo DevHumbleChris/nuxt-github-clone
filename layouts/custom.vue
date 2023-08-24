@@ -1,5 +1,4 @@
-<script setup>
-import Header from '@/components/global/Header.vue'
+<script setup lang="ts">
 const route = useRoute()
 useHead({
   htmlAttrs: {
@@ -20,7 +19,6 @@ useHead({
 
 <template>
   <main class="max-w-8xl font-lexend text-gray-700">
-    <Header />
     <slot/>
   </main>
 </template>
