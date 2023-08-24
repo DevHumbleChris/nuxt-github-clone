@@ -1,7 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@sidebase/nuxt-auth", "@nuxtjs/tailwindcss"],
+  modules: [
+    "@sidebase/nuxt-auth",
+    "@nuxtjs/tailwindcss",
+    "nuxt-icon",
+    "@nuxt/image",
+  ],
   auth: {
     provider: {
       type: "authjs",
@@ -14,17 +19,15 @@ export default defineNuxtConfig({
       GITHUB_CLIENT_SECRET: process.env.NUXT_GITHUB_CLIENT_SECRET,
     },
   },
-  tailwindcss : {
-    cssPath: '~/assets/css/tailwind.css',
+  tailwindcss: {
+    cssPath: "~/assets/css/tailwind.css",
     config: {
       theme: {
         fontFamily: {
           lexend: ["Lexend", "sans-serif"],
         },
       },
-      plugins: [
-        require("tailwind-scrollbar-hide"),
-      ],
+      plugins: [require("tailwind-scrollbar-hide")],
     },
-  }
+  },
 });
