@@ -10,7 +10,11 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@sidebase/nuxt-auth": "^0.6.0-beta.4",
     "@types/node": "^18.17.3",
     "nuxt": "^3.6.5"
+  },
+  "dependencies": {
+    "next-auth": "^4.21.1"
   }
 }
