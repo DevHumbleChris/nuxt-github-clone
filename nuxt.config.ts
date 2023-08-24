@@ -25,7 +25,7 @@ export default defineNuxtConfig({
       theme: {
         fontFamily: {
           lexend: ["Lexend", "sans-serif"],
-        },
+        }
       },
       plugins: [require("tailwind-scrollbar-hide")],
     },
