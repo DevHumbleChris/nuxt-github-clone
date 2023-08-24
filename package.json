@@ -16,6 +16,7 @@
     "nuxt": "^3.6.5"
   },
   "dependencies": {
-    "next-auth": "^4.21.1"
+    "next-auth": "^4.21.1",
+    "tailwind-scrollbar-hide": "^1.1.7"
   }
 }

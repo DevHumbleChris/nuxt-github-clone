@@ -24,7 +24,6 @@ export default defineNuxtConfig({
       },
       plugins: [
         require("tailwind-scrollbar-hide"),
-        // ...
       ],
     },
   }
