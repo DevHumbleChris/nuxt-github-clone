@@ -15,6 +15,17 @@ export default defineNuxtConfig({
     },
   },
   tailwindcss : {
-    cssPath: '~/assets/css/tailwind.css'
+    cssPath: '~/assets/css/tailwind.css',
+    config: {
+      theme: {
+        fontFamily: {
+          lexend: ["Lexend", "sans-serif"],
+        },
+      },
+      plugins: [
+        require("tailwind-scrollbar-hide"),
+        // ...
+      ],
+    },
   }
 });
