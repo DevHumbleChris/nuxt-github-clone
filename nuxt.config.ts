@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     provider: {
       type: "authjs",
     },
-    globalAppMiddleware: true,
+    // globalAppMiddleware: true,
   },
   runtimeConfig: {
     public: {
