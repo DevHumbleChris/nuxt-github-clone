@@ -31,4 +31,9 @@ export default defineNuxtConfig({
       plugins: [require("tailwind-scrollbar-hide")],
     },
   },
+  image: {
+    domains: [
+      'avatars.githubusercontent.com'
+    ]
+  }
 });
