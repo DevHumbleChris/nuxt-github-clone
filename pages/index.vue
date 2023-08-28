@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import Sidebar from '~/components/dashboard/Sidebar.vue'
+</script>
+
 <template>
-    <h1>Welcome To Nuxt GitHub Clone</h1>
+    <section class="flex bg-red-200">
+        <Sidebar />
+        <div>center</div>
+        <div>right</div>
+    </section>
 </template>
