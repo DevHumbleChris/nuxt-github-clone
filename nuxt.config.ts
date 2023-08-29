@@ -17,7 +17,9 @@ export default defineNuxtConfig({
     public: {
       GITHUB_CLIENT_ID: process.env.NUXT_GITHUB_CLIENT_ID,
       GITHUB_CLIENT_SECRET: process.env.NUXT_GITHUB_CLIENT_SECRET,
-      NUXT_AUTH_SECRET: process.env.NUXT_AUTH_SECRET
+      NUXT_AUTH_SECRET: process.env.NUXT_AUTH_SECRET,
+      baseURL: 'https://api.github.com',
+      NUXT_GITHUB_AUTH_TOKEN: process.env.NUXT_GITHUB_AUTH_TOKEN
     },
   },
   tailwindcss: {

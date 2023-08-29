@@ -8,7 +8,7 @@ definePageMeta({
 <template>
     <section class="flex">
         <Sidebar />
-        <div>center</div>
+        <div class="w-full">center</div>
         <div>right</div>
     </section>
 </template>
