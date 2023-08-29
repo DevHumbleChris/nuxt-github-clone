@@ -18,7 +18,7 @@ export default defineNuxtConfig({
       GITHUB_CLIENT_ID: process.env.NUXT_GITHUB_CLIENT_ID,
       GITHUB_CLIENT_SECRET: process.env.NUXT_GITHUB_CLIENT_SECRET,
       NUXT_AUTH_SECRET: process.env.NUXT_AUTH_SECRET,
-      baseURL: 'https://api.github.com',
+      baseURL: process.env.BASE_URL,
       NUXT_GITHUB_AUTH_TOKEN: process.env.NUXT_GITHUB_AUTH_TOKEN
     },
   },
@@ -32,7 +32,9 @@ export default defineNuxtConfig({
         extend: {
           colors: {
             'light-dark': '#0d1017',
-            'main': '#010409'
+            'main': '#010409',
+            'octo-green': '#238636',
+            'light-octo-green': '#a7ceae'
           }
         }
       },

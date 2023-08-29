@@ -67,9 +67,9 @@ console.log(await getUsername())
           />
         </button>
         <button
-          class="block border border-gray-700 px-1 py-[2px] rounded-full border-gray-500 hover:border-gray-300 hover:bg-gray-800 rounded-full w-8 h-8"
+          class="block border border-gray-700 px-1 py-[2px] rounded-full border-gray-500 hover:border-gray-300 hover:bg-gray-800 rounded-full"
         >
-          <nuxt-img :src="userImage" class="w-full h-full object-cover" />
+          <nuxt-img :src="userImage" class="w-8 h-8 object-cover" />
         </button>
       </div>
     </div>

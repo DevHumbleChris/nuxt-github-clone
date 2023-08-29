@@ -1,3 +1,4 @@
+
 export const getUsername = async () => {
   const { image } = user();
   const config = useRuntimeConfig();
@@ -14,7 +15,7 @@ export const getUsername = async () => {
     },
   });
 
-  const username = data?.value?.login
+  const username: string = data?.value?.login
 
   return {
     username,
