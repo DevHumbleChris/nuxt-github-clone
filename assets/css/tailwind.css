@@ -4,6 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body {
-    @apply bg-[#010409];
-} */
+body {
+    @apply bg-main;
+}
