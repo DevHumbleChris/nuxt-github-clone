@@ -12,7 +12,6 @@ export default defineNuxtConfig({
       type: "authjs",
     },
     globalAppMiddleware: true,
-    origin: 'nuxt-github-clone-ke.vercel.app'
   },
   runtimeConfig: {
     public: {
