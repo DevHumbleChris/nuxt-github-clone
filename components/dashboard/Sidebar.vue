@@ -49,9 +49,9 @@ console.log(repos?.value);
           v-for="repo in repos"
           :key="repo?.id"
           to="#"
-          class="flex items-center gap-2 hover:underline text-gray-200"
+          class="flex items-center gap-2 hover:underline text-gray-200 w-5 h-5"
         >
-          <nuxt-img :src="image" class="w-5 h-5 rounded-full" />
+          <nuxt-img :src="image" class="w-full h-full object-cover rounded-full" />
           <p>{{ repo?.owner?.login }}/{{ repo?.name }}</p>
         </NuxtLink>
       </div>
