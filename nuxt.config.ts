@@ -34,7 +34,8 @@ export default defineNuxtConfig({
             'light-dark': '#0d1017',
             'main': '#010409',
             'octo-green': '#238636',
-            'light-octo-green': '#a7ceae'
+            'light-octo-green': '#a7ceae',
+            'new-blue': '#154792'
           }
         }
       },

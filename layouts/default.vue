@@ -21,6 +21,6 @@ useHead({
 <template>
   <main class="max-w-8xl font-lexend text-gray-700">
     <Header />
-    <slot/>
+    <slot />
   </main>
 </template>
