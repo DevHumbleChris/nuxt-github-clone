@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Sidebar from '~/components/dashboard/Sidebar.vue'
+import Events from '~/components/dashboard/Events.vue';
 definePageMeta({
     title: 'Dashboard'
 })
@@ -8,7 +9,7 @@ definePageMeta({
 <template>
     <section class="flex bg-main">
         <Sidebar />
-        <div class="w-full">center</div>
+        <Events />
         <div>right</div>
     </section>
 </template>

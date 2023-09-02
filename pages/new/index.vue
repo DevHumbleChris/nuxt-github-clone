@@ -5,7 +5,6 @@ definePageMeta({
 })
 const { username } = await getUsername();
 const { image } = await user();
-const config = useRuntimeConfig();
 const genRepoName = useState("genRepoName", () => "");
 
 if (process.server) {

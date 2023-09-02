@@ -17,13 +17,11 @@ const { data: repos } = useAsyncData("repos", async () => {
 
   return data?.value;
 });
-
-console.log(repos?.value);
 </script>
 
 <template>
   <aside
-    class="sticky top-0 left-0 w-[24rem] bg-light-dark h-screen text-white text-xs px-4 py-3"
+    class="sticky top-0 left-0 w-[22rem] bg-light-dark h-screen text-white text-xs px-4 py-3"
   >
     <div class="mt-4 space-y-6">
       <div class="flex items-center gap-2 border-b border-gray-600 py-5">
