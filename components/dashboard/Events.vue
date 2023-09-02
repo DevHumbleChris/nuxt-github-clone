@@ -5,16 +5,13 @@ const config = useRuntimeConfig();
 const { username } = await getUsername();
 const selectedMainEvent = useState("selectedMainEvent", () => "for you");
 const { data: userEvents } = useAsyncData("events", async () => {
-  const { data, error } = await useMyFetch(
-    `/users/${username}/received_events`,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${config.public.NUXT_GITHUB_AUTH_TOKEN}`,
-        Accept: "application/vnd.github.v3+json",
-      },
-    }
-  );
+  const { data } = await useMyFetch(`/users/${username}/received_events`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${config.public.NUXT_GITHUB_AUTH_TOKEN}`,
+      Accept: "application/vnd.github.v3+json",
+    },
+  });
 
   return data?.value;
 });
@@ -81,12 +78,19 @@ const getEventType = (userEvent: string) => {
               <p>
                 {{ getEventType(event?.type) }}
               </p>
-              <EventRemarks :eventType="getEventType(event?.type)" :userEvent="event"/>
+              <EventRemarks
+                :eventType="getEventType(event?.type)"
+                :userEvent="event"
+              />
             </div>
             <timeago :datetime="event?.created_at" />
           </div>
         </div>
-        <EventWrapper :userEvents="event" :eventType="getEventType(event?.type)" />
+        <EventWrapper
+          :userEvents="event"
+          :eventType="getEventType(event?.type)"
+          :username="username"
+        />
       </div>
     </div>
   </section>
