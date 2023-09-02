@@ -14,7 +14,7 @@ useHead({
     { name: 'twitter:description', content: 'GitHub Clone using Nuxt.js, Typescript, and Tailwind CSS.' },
     { name: 'twitter:site', content: 'https://panto-ke.vercel.app/' }
   ],
-  title: `Nuxt GitHub Clone - ${route?.meta?.title}`,
+  title: `${route?.meta?.title}`,
 })
 </script>
 
