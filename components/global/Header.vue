@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { image: userImage } = user();
-console.log(await getUsername())
 </script>
 
 <template>

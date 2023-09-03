@@ -1,5 +1,7 @@
 <script setup>
 import Header from '@/components/global/Header.vue'
+import SidebarMenu from '@/components/global/SidebarMenu.vue'
+import RightSidebarMenu from '~/components/global/RightSidebarMenu.vue';
 const route = useRoute()
 useHead({
   htmlAttrs: {
@@ -20,7 +22,9 @@ useHead({
 
 <template>
   <main class="max-w-8xl font-lexend text-gray-700">
+    <SidebarMenu />
     <Header />
     <slot />
+    <RightSidebarMenu />
   </main>
 </template>

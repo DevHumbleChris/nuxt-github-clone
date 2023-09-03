@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "nuxt-icon",
     "@nuxt/image",
+    "@vueuse/motion/nuxt",
   ],
   auth: {
     provider: {
@@ -19,7 +20,7 @@ export default defineNuxtConfig({
       GITHUB_CLIENT_SECRET: process.env.NUXT_GITHUB_CLIENT_SECRET,
       NUXT_AUTH_SECRET: process.env.NUXT_AUTH_SECRET,
       baseURL: process.env.BASE_URL,
-      NUXT_GITHUB_AUTH_TOKEN: process.env.NUXT_GITHUB_AUTH_TOKEN
+      NUXT_GITHUB_AUTH_TOKEN: process.env.NUXT_GITHUB_AUTH_TOKEN,
     },
   },
   tailwindcss: {
@@ -31,20 +32,18 @@ export default defineNuxtConfig({
         },
         extend: {
           colors: {
-            'light-dark': '#0d1017',
-            'main': '#010409',
-            'octo-green': '#238636',
-            'light-octo-green': '#a7ceae',
-            'new-blue': '#154792'
-          }
-        }
+            "light-dark": "#0d1017",
+            main: "#010409",
+            "octo-green": "#238636",
+            "light-octo-green": "#a7ceae",
+            "new-blue": "#154792",
+          },
+        },
       },
       plugins: [require("tailwind-scrollbar-hide")],
     },
   },
   image: {
-    domains: [
-      'avatars.githubusercontent.com'
-    ]
-  }
+    domains: ["avatars.githubusercontent.com"],
+  },
 });
