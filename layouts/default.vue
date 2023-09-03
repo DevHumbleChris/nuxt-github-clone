@@ -3,6 +3,7 @@ import Header from "@/components/global/Header.vue";
 import SidebarMenu from "@/components/global/SidebarMenu.vue";
 import RightSidebarMenu from "~/components/global/RightSidebarMenu.vue";
 import { useMenuStore } from "~/stores/menu";
+import Footer from "~/components/global/Footer.vue";
 
 const menuStore = useMenuStore();
 const route = useRoute();
@@ -49,5 +50,6 @@ const isRightSidebarMenuOpen = computed(() => {
       <slot />
     </div>
     <RightSidebarMenu />
+    <Footer />
   </main>
 </template>

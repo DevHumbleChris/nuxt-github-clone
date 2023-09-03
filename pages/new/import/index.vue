@@ -29,7 +29,7 @@ const setSelectedInput = () => {
 </script>
 
 <template>
-  <section class="bg-light-dark h-screen text-xs">
+  <section class="bg-light-dark sm:h-screen text-xs p-5">
     <div class="text-gray-500 max-w-2xl mx-auto py-8 space-y-5">
       <div class="space-y-2">
         <h1 class="text-2xl text-white">Import your project to GitHub</h1>

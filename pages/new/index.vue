@@ -28,7 +28,7 @@ const setSelectedInput = () => {
 </script>
 
 <template>
-  <section class="bg-light-dark h-screen text-xs">
+  <section class="bg-light-dark text-xs p-5">
     <div class="text-gray-500 max-w-2xl mx-auto py-8 space-y-5">
       <div class="space-y-2">
         <h1 class="text-2xl text-white">Create a new repository</h1>
@@ -226,7 +226,7 @@ const setSelectedInput = () => {
         </div>
         <hr class="border-gray-700 block" />
       </div>
-      <div class="flex">
+      <div class="flex justify-end">
         <button
           class="bg-octo-green p-2 text-white hover:bg-green-500 rounded-md"
         >

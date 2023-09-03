@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { useMenuStore } from "~/stores/menu";
+const { currentRoute } = useRouter();
 
+const pathName = computed(() => {
+  return currentRoute?.value?.name;
+});
+const fullPath = computed(() => {
+  return currentRoute?.value?.fullPath;
+});
 const menuStore = useMenuStore();
 const { image: userImage } = user();
 
@@ -10,6 +17,17 @@ const openLeftSidebarMenu = () => {
 
 const openRightSidebarMenu = () => {
   menuStore?.openRightSidebarMenu();
+};
+
+const setRouteInfo = (pathInfo: string) => {
+  switch (pathInfo) {
+    case "/":
+      return "Dashboard";
+    case "/new":
+      return "New repository";
+    default:
+      return "";
+  }
 };
 </script>
 
@@ -22,14 +40,22 @@ const openRightSidebarMenu = () => {
       >
         <Icon name="heroicons:bars-3" class="text-gray-400 w-5 h-auto -mt-1" />
       </button>
-      <NuxtLink to="/" class="group flex items-center gap-2">
-        <Icon name="mdi:github" class="text-white w-10 h-auto" />
-        <p
-          class="text-white px-2 py-1 group-hover:bg-gray-800 group-hover:rounded text-sm"
+      <div class="group flex items-center gap-2">
+        <NuxtLink to="/" class="block">
+          <Icon name="mdi:github" class="text-white w-10 h-auto" />
+        </NuxtLink>
+        <NuxtLink
+          :to="fullPath"
+          class="text-white px-2 py-1 text-sm"
+          :class="
+            setRouteInfo(fullPath)
+              ? 'group-hover:bg-gray-800 group-hover:rounded'
+              : ''
+          "
         >
-          Dashboard
-        </p>
-      </NuxtLink>
+          {{ setRouteInfo(fullPath) }}
+        </NuxtLink>
+      </div>
     </div>
     <div class="flex items-center gap-2 sm:gap-5">
       <button
