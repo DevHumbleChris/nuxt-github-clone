@@ -1,11 +1,21 @@
 <script setup lang="ts">
+import { useMenuStore } from "~/stores/menu";
+
+const menuStore = useMenuStore();
 const { image: userImage } = user();
+
+const openLeftSidebarMenu = () => {
+  menuStore?.openLeftSidebarMenu();
+};
 </script>
 
 <template>
   <header class="bg-[#010409] p-3 flex items-center justify-between">
     <div class="flex items-center gap-4">
-      <button class="block border border-gray-600 px-1.5 py-1 rounded">
+      <button
+        @click="openLeftSidebarMenu"
+        class="block border hover:border-gray-200 border-gray-600 px-1.5 py-1 rounded"
+      >
         <Icon name="heroicons:bars-3" class="text-gray-400 w-5 h-auto -mt-1" />
       </button>
       <NuxtLink to="/" class="group flex items-center gap-2">

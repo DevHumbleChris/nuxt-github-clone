@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@nuxt/image",
     "@vueuse/motion/nuxt",
+    "@pinia/nuxt",
   ],
   auth: {
     provider: {
@@ -45,5 +46,8 @@ export default defineNuxtConfig({
   },
   image: {
     domains: ["avatars.githubusercontent.com"],
+  },
+  pinia: {
+    autoImports: ["defineStore"],
   },
 });

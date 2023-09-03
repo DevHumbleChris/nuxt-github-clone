@@ -1,9 +1,15 @@
 <script setup>
+import { useMenuStore } from '~/stores/menu'
+
+const menuStore = useMenuStore()
 const config = useRuntimeConfig();
 const { image } = user();
 const { username } = await getUsername();
 
 const perPageFetch = useState('perPageFetch', () => 7)
+const isRightSidebarMenuOpen = computed(() => {
+    return menuStore?.isRightSidebarMenuOpen
+})
 
 const { data: repos, refresh } = useAsyncData("repos", async () => {
   const { data } = await useMyFetch(
@@ -27,7 +33,7 @@ const showMore = () => {
 </script>
 
 <template>
-  <aside
+  <aside v-if="isRightSidebarMenuOpen"
     v-motion
     :initial="{ opacity: 0, x: 100 }"
     :enter="{ opacity: 1, x: 0 }"
