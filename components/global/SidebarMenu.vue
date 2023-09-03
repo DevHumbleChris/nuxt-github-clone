@@ -49,7 +49,7 @@ const closeLeftSidebarMenu = () => {
     :initial="{ opacity: 0, x: -100 }"
     :enter="{ opacity: 1, x: 0 }"
     :delay="200"
-    class="fixed shrink-0 hidden lg:block top-0 left-0 w-[20rem] bg-[#161b21] h-screen text-gray-100 text-sm px-4 py-3 rounded-r-2xl shadow-xl shadow-gray-800/10 z-40"
+    class="fixed shrink-0 top-0 left-0 w-[20rem] bg-[#161b21] h-screen text-gray-100 text-sm px-4 py-3 rounded-r-2xl shadow-xl shadow-gray-800/10 z-40"
   >
     <div class="flex items-center bg-[#161b21] z-20 py-2 justify-between">
       <Icon name="mdi:github" class="text-white w-10 h-auto" />
