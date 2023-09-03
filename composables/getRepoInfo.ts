@@ -1,5 +1,4 @@
 export const getRepoInfo = async (repoInfo: string) => {
-  console.log(repoInfo)
   const config = useRuntimeConfig();
   const { data, error } = await useMyFetch(`/repos/${repoInfo}`, {
     method: "GET",
@@ -8,7 +7,6 @@ export const getRepoInfo = async (repoInfo: string) => {
       Accept: "application/vnd.github.v3+json",
     },
   });
-  console.log(data?.value)
   return {
     data: data?.value,
     error: error?.value

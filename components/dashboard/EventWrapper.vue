@@ -22,7 +22,7 @@ const username = computed(() => {
 const { data: repoInfo, error } = await getRepoInfo(
   userEvents?.value?.repo?.name
 );
-console.log(repoInfo, error);
+// console.log(repoInfo, error);
 
 const getUserRepo = (repoName) => {
   const splittedName = repoName.split("/");
@@ -39,7 +39,7 @@ const setRenderedMarkdown = (markdownText) => {
 <template>
   <div class="p-3 border border-gray-700 rounded bg-light-dark">
     <div v-if="eventType === 'forked'" class="space-y-2">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center flex-wrap gap-3 justify-between">
         <div class="flex items-center gap-2">
           <div class="w-4 h-4 border rounded-full border-gray-600">
             <nuxt-img
@@ -87,7 +87,7 @@ const setRenderedMarkdown = (markdownText) => {
       </div>
     </div>
     <div v-else-if="eventType === 'created'" class="space-y-2">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center flex-wrap gap-3 justify-between">
         <div class="flex items-center gap-2">
           <div class="w-4 h-4">
             <nuxt-img
@@ -136,7 +136,7 @@ const setRenderedMarkdown = (markdownText) => {
       </div>
     </div>
     <div v-else-if="eventType === 'starred'" class="space-y-2">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center flex-wrap gap-3 justify-between">
         <div class="flex items-center gap-2">
           <div class="w-4 h-4 border rounded-full border-gray-600">
             <nuxt-img
@@ -184,7 +184,7 @@ const setRenderedMarkdown = (markdownText) => {
       </div>
     </div>
     <div v-else-if="eventType === 'released'" class="space-y-2">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center flex-wrap gap-3 justify-between">
         <div class="flex items-center gap-2">
           <div class="w-4 h-4 border rounded-full border-gray-600">
             <nuxt-img

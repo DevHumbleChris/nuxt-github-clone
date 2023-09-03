@@ -64,7 +64,7 @@ const getEventType = (userEvent: string) => {
     </div>
     <div class="space-y-4">
       <div v-for="event in userEvents" :key="event?.id" class="space-y-2">
-        <div class="flex items-center gap-2">
+        <div class="flex items-center flex-wrap gap-2">
           <div class="w-6 h-6">
             <nuxt-img
               :src="event?.actor?.avatar_url"
@@ -72,9 +72,9 @@ const getEventType = (userEvent: string) => {
               class="w-full h-full object-cover rounded-full"
             />
           </div>
-          <div class="flex items-center gap-1">
+          <div class="flex items-center flex-wrap gap-1">
             <p class="text-gray-100">{{ event?.actor?.login }}</p>
-            <div class="flex items-center gap-1">
+            <div class="flex items-center  gap-1">
               <p>
                 {{ getEventType(event?.type) }}
               </p>
