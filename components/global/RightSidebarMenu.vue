@@ -1,146 +1,191 @@
 <script setup>
-import { useMenuStore } from '~/stores/menu'
+import { useMenuStore } from "~/stores/menu";
 
-const menuStore = useMenuStore()
+const menuStore = useMenuStore();
 const config = useRuntimeConfig();
-const { image } = user();
+const { image, name } = user();
 const { username } = await getUsername();
 
-const perPageFetch = useState('perPageFetch', () => 7)
+const perPageFetch = useState("perPageFetch", () => 7);
 const isRightSidebarMenuOpen = computed(() => {
-    return menuStore?.isRightSidebarMenuOpen
-})
-
-const { data: repos, refresh } = useAsyncData("repos", async () => {
-  const { data } = await useMyFetch(
-    `/users/${username}/repos?per_page=${perPageFetch?.value}&sort=created`,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${config.public.NUXT_GITHUB_AUTH_TOKEN}`,
-        Accept: "application/vnd.github.v3+json",
-      },
-    }
-  );
-
-  return data?.value;
+  return menuStore?.isRightSidebarMenuOpen;
 });
 
 const showMore = () => {
-    perPageFetch.value += 5
-    refresh()
-}
+  perPageFetch.value += 5;
+  refresh();
+};
+
+const closeRightSidebarMenu = () => {
+  menuStore?.openRightSidebarMenu();
+};
 </script>
 
 <template>
-  <aside v-if="isRightSidebarMenuOpen"
+  <aside
+    v-if="isRightSidebarMenuOpen"
     v-motion
     :initial="{ opacity: 0, x: 100 }"
     :enter="{ opacity: 1, x: 0 }"
     :delay="200"
-    class="fixed shrink-0 hidden lg:block top-0 right-0 w-[20rem] bg-[#161b21] h-screen text-gray-100 text-sm px-4 py-3 rounded-r-2xl shadow-xl z-40"
+    class="fixed shrink-0 hidden lg:block top-0 right-0 w-[20rem] bg-[#161b21] h-screen text-gray-100 text-sm px-4 py-3 shadow-gray-800/10 space-y-2 rounded-r-2xl shadow-xl z-40"
   >
     <div class="flex items-center bg-[#161b21] z-20 py-2 justify-between">
-      <Icon name="mdi:github" class="text-white w-10 h-auto" />
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 border rounded-full border-gray-600">
+          <nuxt-img
+            :src="image"
+            class="w-full h-full object-cover rounded-full"
+          />
+        </div>
+        <div>
+          <h2>{{ username }}</h2>
+          <p class="text-gray-600">{{ name }}</p>
+        </div>
+      </div>
       <button
-        class="block hover:bg-[#2d313a] p-2 rounded-md text-gray-500 hover:text-white"
+        @click="closeRightSidebarMenu"
+        class="block bg-[#2d313a] p-2 rounded-md text-gray-500 hover:text-white"
       >
         <Icon name="ic:round-close" class="w-4 h-auto" />
       </button>
     </div>
-    <div class="overflow-auto h-[80%]">
-        <ul class="p-2 space-y-1">
-          <li class="hover:bg-gray-800 p-2 hover:rounded-md">
-            <NuxtLink href="#" class="flex items-center gap-2">
-              <Icon name="octicon:home-24" class="w-5 h-auto text-gray-500" />
-              <p>Home</p>
-            </NuxtLink>
-          </li>
-          <li class="hover:bg-gray-800 p-2 hover:rounded-md">
-            <NuxtLink href="#" class="flex items-center gap-2"
-              ><Icon
-                name="octicon:issue-opened-24"
-                class="w-5 h-auto text-gray-500"
-              />
-              <p>Issues</p></NuxtLink
-            >
-          </li>
-          <li class="hover:bg-gray-800 p-2 hover:rounded-md">
-            <NuxtLink href="#" class="flex items-center gap-2"
-              ><Icon
-                name="octicon:git-pull-request-24"
-                class="w-5 h-auto text-gray-500"
-              />
-              <p>Pull requests</p></NuxtLink
-            >
-          </li>
-          <li class="hover:bg-gray-800 p-2 hover:rounded-md">
-            <NuxtLink href="#" class="flex items-center gap-2"
-              ><Icon
-                name="octicon:comment-discussion-24"
-                class="w-5 h-auto text-gray-500"
-              />
-              <p>Discussions</p></NuxtLink
-            >
-          </li>
-          <hr class="border-gray-800" />
-        </ul>
-        <div class="p-2 space-y-2">
-          <div class="flex items-center justify-between">
-            <h2>Repositories</h2>
-            <button
-              class="block hover:bg-[#2d313a] p-2 rounded-md text-gray-500 hover:text-white"
-            >
-              <Icon name="octicon:search-24" class="w-4 h-auto" />
-            </button>
-          </div>
-          <div class="text-xs">
-            <NuxtLink
-              v-for="repo in repos"
-              :key="repo?.id"
-              to="#"
-              class="flex w-full hover:bg-gray-800 p-2 hover:rounded-md items-center gap-2 hover:underline text-gray-200"
-            >
-              <div class="w-5 h-5 bg-gray-700 rounded-full">
-                <nuxt-img :src="image" class="w-full h-full object-cover" />
-              </div>
-              <p>{{ repo?.owner?.login }}/{{ repo?.name }}</p>
-            </NuxtLink>
-            <button @click="showMore" class="text-gray-500 block p-2 hover:bg-gray-800 w-full text-left hover:rounded-md">
-              Show more
-            </button>
-          </div>
-        </div>
-    </div>
-    <ul class="absolute bg-[#161b21] z-20 bottom-0 right-0 left-0 p-2 space-y-1">
+    <ul class="p-2 space-y-1">
       <hr class="border-gray-800" />
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">
         <NuxtLink href="#" class="flex items-center gap-2">
-          <Icon name="octicon:telescope-24" class="w-5 h-auto text-gray-500" />
-          <p>Explore</p>
+          <Icon name="octicon:person-24" class="w-5 h-auto text-gray-500" />
+          <p>Your profile</p>
         </NuxtLink>
+      </li>
+      <hr class="border-gray-800" />
+
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon name="octicon:repo-24" class="w-5 h-auto text-gray-500" />
+          <p>Your repositories</p></NuxtLink
+        >
       </li>
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">
         <NuxtLink href="#" class="flex items-center gap-2"
-          ><Icon name="octicon:gift-24" class="w-5 h-auto text-gray-500" />
-          <p>Marketplace</p></NuxtLink
+          ><Icon name="octicon:project-24" class="w-5 h-auto text-gray-500" />
+          <p>Your projects</p></NuxtLink
         >
       </li>
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">
         <NuxtLink href="#" class="flex items-center gap-2"
           ><Icon
-            name="octicon:comment-discussion-24"
+            name="octicon:codespaces-24"
             class="w-5 h-auto text-gray-500"
           />
-          <p class="flex items-center justify-between w-full">
-            <span class="block">Give new navigation feedback</span>
-            <span
-              class="block border rounded-full px-2 border-octo-green text-octo-green text-xs"
-              >Beta</span
-            >
-          </p></NuxtLink
+          <p>Your codespaces</p></NuxtLink
         >
       </li>
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon
+            name="octicon:organization-24"
+            class="w-5 h-auto text-gray-500"
+          />
+          <p>Your organizations</p></NuxtLink
+        >
+      </li>
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon name="octicon:globe-24" class="w-5 h-auto text-gray-500" />
+          <p>Your enterprises</p></NuxtLink
+        >
+      </li>
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon name="octicon:star-24" class="w-5 h-auto text-gray-500" />
+          <p>Your stars</p></NuxtLink
+        >
+      </li>
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon name="octicon:heart-24" class="w-5 h-auto text-gray-500" />
+          <p>Your sponsors</p></NuxtLink
+        >
+      </li>
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon
+            name="octicon:code-square-24"
+            class="w-5 h-auto text-gray-500"
+          />
+          <p>Your gists</p></NuxtLink
+        >
+      </li>
+      <hr class="border-gray-800" />
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon
+            name="octicon:upload-24"
+            class="w-5 h-auto text-gray-500"
+          />
+          <p>Upgrade</p></NuxtLink
+        >
+      </li>
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon
+            name="octicon:globe-24"
+            class="w-5 h-auto text-gray-500"
+          />
+          <p>Try Enterprise</p></NuxtLink
+        >
+      </li>
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon
+            name="octicon:copilot-24"
+            class="w-5 h-auto text-gray-500"
+          />
+          <p>Try Copilot</p></NuxtLink
+        >
+      </li>
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon
+            name="octicon:beaker-24"
+            class="w-5 h-auto text-gray-500"
+          />
+          <p>Feature preview</p></NuxtLink
+        >
+      </li>
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon
+            name="octicon:settings-24"
+            class="w-5 h-auto text-gray-500"
+          />
+          <p>Settings</p></NuxtLink
+        >
+      </li>
+      <hr class="border-gray-800" />
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon
+            name="octicon:book-24"
+            class="w-5 h-auto text-gray-500"
+          />
+          <p>GitHub Docs</p></NuxtLink
+        >
+      </li>
+      <li class="hover:bg-gray-800 p-2 hover:rounded-md">
+        <NuxtLink href="#" class="flex items-center gap-2"
+          ><Icon
+            name="octicon:people-24"
+            class="w-5 h-auto text-gray-500"
+          />
+          <p>GitHub Support</p></NuxtLink
+        >
+      </li>
+      <hr class="border-gray-800" />
+      <button class="block w-full text-left hover:bg-gray-800 p-2 hover:rounded-md">
+        Sign out
+      </button>
     </ul>
   </aside>
 </template>

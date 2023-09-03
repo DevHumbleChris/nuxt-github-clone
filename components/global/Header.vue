@@ -7,6 +7,10 @@ const { image: userImage } = user();
 const openLeftSidebarMenu = () => {
   menuStore?.openLeftSidebarMenu();
 };
+
+const openRightSidebarMenu = () => {
+  menuStore?.openRightSidebarMenu();
+};
 </script>
 
 <template>
@@ -76,6 +80,7 @@ const openLeftSidebarMenu = () => {
           />
         </button>
         <button
+          @click="openRightSidebarMenu"
           class="block border border-gray-700 px-1 py-[2px] rounded-full border-gray-500 hover:border-gray-300 hover:bg-gray-800 rounded-full w-8 h-8"
         >
           <nuxt-img :src="userImage" class="w-full h-full object-cover" />

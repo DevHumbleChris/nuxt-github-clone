@@ -3,9 +3,11 @@ const config = useRuntimeConfig();
 const { image } = user();
 const { username } = await getUsername();
 
-const { data: repos } = useAsyncData("repos", async () => {
+const perPageFetch = useState("perPageFetch", () => 7);
+
+const { data: repos, refresh } = useAsyncData("repos", async () => {
   const { data } = await useMyFetch(
-    `/users/${username}/repos?per_page=7&sort=created`,
+    `/users/${username}/repos?per_page=${perPageFetch?.value}&sort=created`,
     {
       method: "GET",
       headers: {
@@ -17,12 +19,18 @@ const { data: repos } = useAsyncData("repos", async () => {
 
   return data?.value;
 });
+
+const showMore = () => {
+  perPageFetch.value += 5;
+  refresh();
+};
 </script>
 
 <template>
   <aside
-    class="shrink-0 hidden lg:block sticky top-0 left-0 w-[20rem] bg-light-dark h-screen text-white text-xs px-4 py-3"
+    class="shrink-0 hidden lg:block sticky top-0 left-0 w-[20rem] bg-light-dark h-screen text-white text-xs"
   >
+  <div class="overflow-auto h-[100%] px-4 py-3">
     <div class="mt-4 space-y-6">
       <div class="flex items-center gap-2 border-b border-gray-600 py-5">
         <nuxt-img :src="image" class="w-5 h-5 rounded-full bg-gray-600" />
@@ -31,7 +39,8 @@ const { data: repos } = useAsyncData("repos", async () => {
       <div class="space-y-3">
         <div class="flex items-center justify-between">
           <h1 class="text-sm">Top Repositories</h1>
-          <NuxtLink to="/new"
+          <NuxtLink
+            to="/new"
             class="flex items-center gap-1 bg-octo-green p-2 rounded-md hover:bg-green-500"
           >
             <Icon name="octicon:repo" class="w-4 h-auto" />
@@ -44,22 +53,26 @@ const { data: repos } = useAsyncData("repos", async () => {
           placeholder="Find a repository..."
         />
       </div>
-      <div class="space-y-4">
+      <div>
         <NuxtLink
           v-for="repo in repos"
           :key="repo?.id"
           to="#"
-          class="flex w-full items-center gap-2 hover:underline text-gray-200"
+          class="flex w-full hover:bg-gray-800 p-2 hover:rounded-md items-center gap-2 hover:underline text-gray-200"
         >
           <div class="w-5 h-5 bg-gray-700 rounded-full">
-            <nuxt-img
-              :src="image"
-              class="w-full h-full object-cover"
-            />
+            <nuxt-img :src="image" class="w-full h-full object-cover" />
           </div>
           <p>{{ repo?.owner?.login }}/{{ repo?.name }}</p>
         </NuxtLink>
+        <button
+          @click="showMore"
+          class="text-gray-500 block p-2 hover:bg-gray-800 w-full text-left hover:rounded-md"
+        >
+          Show more
+        </button>
       </div>
     </div>
+  </div>
   </aside>
 </template>
