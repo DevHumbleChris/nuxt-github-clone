@@ -226,9 +226,9 @@ const setSelectedInput = () => {
         </div>
         <hr class="border-gray-700 block" />
       </div>
-      <div class="flex justify-end">
+      <div class="flex">
         <button
-          class="order-last bg-octo-green p-2 text-white hover:bg-green-500 rounded-md"
+          class="bg-octo-green p-2 text-white hover:bg-green-500 rounded-md"
         >
           Create repository
         </button>

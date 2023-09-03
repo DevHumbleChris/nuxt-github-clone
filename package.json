@@ -18,6 +18,7 @@
     "nuxt-icon": "^0.5.0"
   },
   "dependencies": {
+    "markdown-it": "^13.0.1",
     "next-auth": "^4.21.1",
     "octokit": "^3.1.0",
     "tailwind-scrollbar-hide": "^1.1.7",
