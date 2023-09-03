@@ -65,8 +65,8 @@ const getEventType = (userEvent: string) => {
       </button>
     </div>
     <div class="space-y-4">
-      <div v-for="event in userEvents" :key="event?.id" class="space-y-2">
-        <div v-if="getEventType(event?.type) !== 'unknown'">
+      <div v-for="event in userEvents" :key="event?.id">
+        <div v-if="getEventType(event?.type) !== 'unknown'" class="space-y-3">
           <div class="flex items-center flex-wrap gap-2">
             <div class="w-6 h-6">
               <nuxt-img

@@ -1,7 +1,6 @@
 <script setup>
 import SingleRepo from './SingleRepo.vue';
-const { data: repos, error } = await getPublicRepos();
-console.log(repos, error);
+const { data: repos } = await getPublicRepos();
 </script>
 
 <template>

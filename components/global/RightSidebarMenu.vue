@@ -1,6 +1,6 @@
 <script setup>
 import { useMenuStore } from "~/stores/menu";
-
+const { signOut } = useAuth();
 const menuStore = useMenuStore();
 const config = useRuntimeConfig();
 const { image, name } = user();
@@ -18,6 +18,10 @@ const showMore = () => {
 
 const closeRightSidebarMenu = () => {
   menuStore?.openRightSidebarMenu();
+};
+
+const userSignOut = async () => {
+  await signOut({ callbackUrl: "/login" });
 };
 </script>
 
@@ -120,70 +124,51 @@ const closeRightSidebarMenu = () => {
       <hr class="border-gray-800" />
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">
         <NuxtLink href="#" class="flex items-center gap-2"
-          ><Icon
-            name="octicon:upload-24"
-            class="w-5 h-auto text-gray-500"
-          />
+          ><Icon name="octicon:upload-24" class="w-5 h-auto text-gray-500" />
           <p>Upgrade</p></NuxtLink
         >
       </li>
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">
         <NuxtLink href="#" class="flex items-center gap-2"
-          ><Icon
-            name="octicon:globe-24"
-            class="w-5 h-auto text-gray-500"
-          />
+          ><Icon name="octicon:globe-24" class="w-5 h-auto text-gray-500" />
           <p>Try Enterprise</p></NuxtLink
         >
       </li>
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">
         <NuxtLink href="#" class="flex items-center gap-2"
-          ><Icon
-            name="octicon:copilot-24"
-            class="w-5 h-auto text-gray-500"
-          />
+          ><Icon name="octicon:copilot-24" class="w-5 h-auto text-gray-500" />
           <p>Try Copilot</p></NuxtLink
         >
       </li>
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">
         <NuxtLink href="#" class="flex items-center gap-2"
-          ><Icon
-            name="octicon:beaker-24"
-            class="w-5 h-auto text-gray-500"
-          />
+          ><Icon name="octicon:beaker-24" class="w-5 h-auto text-gray-500" />
           <p>Feature preview</p></NuxtLink
         >
       </li>
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">
         <NuxtLink href="#" class="flex items-center gap-2"
-          ><Icon
-            name="octicon:settings-24"
-            class="w-5 h-auto text-gray-500"
-          />
+          ><Icon name="octicon:settings-24" class="w-5 h-auto text-gray-500" />
           <p>Settings</p></NuxtLink
         >
       </li>
       <hr class="border-gray-800" />
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">
         <NuxtLink href="#" class="flex items-center gap-2"
-          ><Icon
-            name="octicon:book-24"
-            class="w-5 h-auto text-gray-500"
-          />
+          ><Icon name="octicon:book-24" class="w-5 h-auto text-gray-500" />
           <p>GitHub Docs</p></NuxtLink
         >
       </li>
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">
         <NuxtLink href="#" class="flex items-center gap-2"
-          ><Icon
-            name="octicon:people-24"
-            class="w-5 h-auto text-gray-500"
-          />
+          ><Icon name="octicon:people-24" class="w-5 h-auto text-gray-500" />
           <p>GitHub Support</p></NuxtLink
         >
       </li>
       <hr class="border-gray-800" />
-      <button class="block w-full text-left hover:bg-gray-800 p-2 hover:rounded-md">
+      <button @click="userSignOut"
+        class="block w-full text-left hover:bg-gray-800 p-2 hover:rounded-md"
+      >
         Sign out
       </button>
     </ul>

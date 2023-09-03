@@ -19,10 +19,9 @@ const username = computed(() => {
   return props?.username;
 });
 
-const { data: repoInfo, error } = await getRepoInfo(
+const { data: repoInfo } = await getRepoInfo(
   userEvents?.value?.repo?.name
 );
-// console.log(repoInfo, error);
 
 const getUserRepo = (repoName) => {
   const splittedName = repoName.split("/");
