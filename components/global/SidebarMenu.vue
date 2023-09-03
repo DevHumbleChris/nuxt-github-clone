@@ -7,12 +7,13 @@ const { image } = user();
 const { username } = await getUsername();
 
 const perPageFetch = useState("perPageFetch", () => 7);
+const isLoadingMore = useState("isLoadingMore", () => false);
 
 const isLeftSidebarMenuOpen = computed(() => {
   return menuStore?.isLeftSidebarMenuOpen;
 });
 
-const { data: repos, refresh } = useAsyncData("repos", async () => {
+const { data: repos, refresh } = useAsyncData("sidebarRepos", async () => {
   const { data } = await useMyFetch(
     `/users/${username}/repos?per_page=${perPageFetch?.value}&sort=created`,
     {
@@ -28,8 +29,12 @@ const { data: repos, refresh } = useAsyncData("repos", async () => {
 });
 
 const showMore = () => {
+  isLoadingMore.value = true;
   perPageFetch.value += 5;
   refresh();
+  setTimeout(() => {
+    isLoadingMore.value = false;
+  }, 600)
 };
 
 const closeLeftSidebarMenu = () => {
@@ -115,9 +120,14 @@ const closeLeftSidebarMenu = () => {
           </NuxtLink>
           <button
             @click="showMore"
-            class="text-gray-500 block p-2 hover:bg-gray-800 w-full text-left hover:rounded-md"
+            class="block p-2 hover:bg-gray-800 w-full text-left hover:rounded-md"
+            :class="{
+              'text-gray-500': !isLoadingMore,
+              'text-blue-500': isLoadingMore,
+            }"
+            :disabled="isLoadingMore"
           >
-            Show more
+            {{ isLoadingMore ? "Loading more..." : "Show more" }}
           </button>
         </div>
       </div>

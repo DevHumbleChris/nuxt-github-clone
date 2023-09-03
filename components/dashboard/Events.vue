@@ -30,6 +30,8 @@ const getEventType = (userEvent: string) => {
       return "created";
     case "ReleaseEvent":
       return "released";
+    default:
+      return "unknown";
   }
 };
 </script>
@@ -64,33 +66,35 @@ const getEventType = (userEvent: string) => {
     </div>
     <div class="space-y-4">
       <div v-for="event in userEvents" :key="event?.id" class="space-y-2">
-        <div class="flex items-center flex-wrap gap-2">
-          <div class="w-6 h-6">
-            <nuxt-img
-              :src="event?.actor?.avatar_url"
-              :alt="event?.actor?.login"
-              class="w-full h-full object-cover rounded-full"
-            />
-          </div>
-          <div class="flex items-center flex-wrap gap-1">
-            <p class="text-gray-100">{{ event?.actor?.login }}</p>
-            <div class="flex items-center  gap-1">
-              <p>
-                {{ getEventType(event?.type) }}
-              </p>
-              <EventRemarks
-                :eventType="getEventType(event?.type)"
-                :userEvent="event"
+        <div v-if="getEventType(event?.type) !== 'unknown'">
+          <div class="flex items-center flex-wrap gap-2">
+            <div class="w-6 h-6">
+              <nuxt-img
+                :src="event?.actor?.avatar_url"
+                :alt="event?.actor?.login"
+                class="w-full h-full object-cover rounded-full"
               />
             </div>
-            <timeago :datetime="event?.created_at" />
+            <div class="flex items-center flex-wrap gap-1">
+              <p class="text-gray-100">{{ event?.actor?.login }}</p>
+              <div class="flex items-center gap-1">
+                <p>
+                  {{ getEventType(event?.type) }}
+                </p>
+                <EventRemarks
+                  :eventType="getEventType(event?.type)"
+                  :userEvent="event"
+                />
+              </div>
+              <timeago :datetime="event?.created_at" />
+            </div>
           </div>
+          <EventWrapper
+            :userEvents="event"
+            :eventType="getEventType(event?.type)"
+            :username="username"
+          />
         </div>
-        <EventWrapper
-          :userEvents="event"
-          :eventType="getEventType(event?.type)"
-          :username="username"
-        />
       </div>
     </div>
   </section>
