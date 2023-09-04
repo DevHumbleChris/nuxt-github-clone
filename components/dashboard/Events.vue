@@ -70,15 +70,15 @@ const getEventType = (userEvent: string) => {
       <div v-for="event in userEvents" :key="event?.id">
         <div v-if="getEventType(event?.type) !== 'unknown'" class="space-y-3">
           <div class="flex items-center flex-wrap gap-2">
-            <div class="w-6 h-6">
+            <NuxtLink :to="'/' + event?.actor?.login" class="block w-6 h-6">
               <nuxt-img
                 :src="event?.actor?.avatar_url"
                 :alt="event?.actor?.login"
                 class="w-full h-full object-cover rounded-full"
               />
-            </div>
+            </NuxtLink>
             <div class="flex items-center flex-wrap gap-1">
-              <p class="text-gray-100">{{ event?.actor?.login }}</p>
+              <NuxtLink :to="'/' + event?.actor?.login" class="block hover:text-blue-600 text-gray-100">{{ event?.actor?.login }}</NuxtLink>
               <div class="flex items-center gap-1">
                 <p>
                   {{ getEventType(event?.type) }}

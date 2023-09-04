@@ -2,12 +2,14 @@
 import { useMenuStore } from "~/stores/menu";
 const { currentRoute } = useRouter();
 
-const pathName = computed(() => {
-  return currentRoute?.value?.name;
-});
 const fullPath = computed(() => {
   return currentRoute?.value?.fullPath;
 });
+
+const usernameParams = computed(() => {
+  return currentRoute?.value?.params?.username
+})
+
 const menuStore = useMenuStore();
 const { image: userImage } = user();
 
@@ -25,6 +27,8 @@ const setRouteInfo = (pathInfo: string) => {
       return "Dashboard";
     case "/new":
       return "New repository";
+    case `/${usernameParams?.value}`:
+      return `${usernameParams?.value}`
     default:
       return "";
   }
