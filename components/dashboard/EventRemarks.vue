@@ -22,4 +22,7 @@ const userEvent = computed(() => {
   <div v-else-if="eventType === 'forked'" class="text-gray-100">
     {{ userEvent?.repo?.name }}
   </div>
+  <div v-else-if="eventType === 'added'" class="text-gray-100">
+    {{ userEvent?.payload?.member?.login }} <span class="text-gray-500">as a collaborator</span>
+  </div>
 </template>

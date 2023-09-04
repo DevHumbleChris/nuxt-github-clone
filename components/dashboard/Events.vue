@@ -30,6 +30,8 @@ const getEventType = (userEvent: string) => {
       return "created";
     case "ReleaseEvent":
       return "released";
+    case "MemberEvent":
+      return "added";
     default:
       return "unknown";
   }
