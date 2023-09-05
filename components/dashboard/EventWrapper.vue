@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import EventWrapper from "./EventWrapper.vue";
 import MarkdownIt from "markdown-it";
 const props = defineProps({
@@ -15,19 +15,14 @@ const eventType = computed(() => {
   return props?.eventType;
 });
 
-const username = computed(() => {
-  return props?.username;
-});
-
 const { data: repoInfo } = await getRepoInfo(userEvents?.value?.repo?.name);
-console.log(repoInfo);
 
-const getUserRepo = (repoName) => {
+const getUserRepo = (repoName: string) => {
   const splittedName = repoName.split("/");
   return splittedName[splittedName?.length - 1];
 };
 
-const setRenderedMarkdown = (markdownText) => {
+const setRenderedMarkdown = (markdownText: string) => {
   const md = new MarkdownIt();
   const generetedMarkdownText = md.render(markdownText);
   return generetedMarkdownText;

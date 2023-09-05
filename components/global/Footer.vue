@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const currentYear = useState('currentYear', () => {
     let year = new Date().getFullYear()
     return year

@@ -1,8 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { generateUsername } from "unique-username-generator";
 definePageMeta({
-  title: 'Import Repository'
-})
+  title: "Import Repository",
+});
 const { username } = await getUsername();
 const { image } = await user();
 const config = useRuntimeConfig();

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import SingleRepo from './SingleRepo.vue';
 const { data: repos } = await getPublicRepos();
 </script>

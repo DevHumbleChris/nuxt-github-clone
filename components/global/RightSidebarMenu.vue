@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useMenuStore } from "~/stores/menu";
 const { signOut } = useAuth();
 const menuStore = useMenuStore();
@@ -10,11 +10,6 @@ const perPageFetch = useState("perPageFetch", () => 7);
 const isRightSidebarMenuOpen = computed(() => {
   return menuStore?.isRightSidebarMenuOpen;
 });
-
-const showMore = () => {
-  perPageFetch.value += 5;
-  refresh();
-};
 
 const closeRightSidebarMenu = () => {
   menuStore?.openRightSidebarMenu();
@@ -166,7 +161,8 @@ const userSignOut = async () => {
         >
       </li>
       <hr class="border-gray-800" />
-      <button @click="userSignOut"
+      <button
+        @click="userSignOut"
         class="block w-full text-left hover:bg-gray-800 p-2 hover:rounded-md"
       >
         Sign out

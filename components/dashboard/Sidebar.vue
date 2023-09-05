@@ -62,7 +62,7 @@ const showMore = () => {
           <NuxtLink
             v-for="repo in repos"
             :key="repo?.id"
-            to="#"
+            :to="repo?.html_url"
             class="flex w-full hover:bg-gray-800 p-2 hover:rounded-md items-center gap-2 hover:underline text-gray-200"
           >
             <div class="w-5 h-5 bg-gray-700 rounded-full">
