@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const props = defineProps({
-    userInfo: Object
-})
+  userInfo: Object,
+});
 
 const userInfo = computed(() => {
-    return props?.userInfo
-})
+  return props?.userInfo;
+});
 </script>
 
 <template>
@@ -21,11 +21,13 @@ const userInfo = computed(() => {
         <button class="flex items-center gap-2">
           <Icon name="octicon:repo-24" class="w-4 h-auto text-[#5f656e]" />
           <p class="text-gray-300 flex items-center gap-2">
-            <span class="block">
-                Repositories
-            </span>
-            <span v-if="userInfo?.public_repos > 0" class="block text-xs rounded-full px-2 bg-[#2d313a]">{{ userInfo?.public_repos }}</span>
-        </p>
+            <span class="block"> Repositories </span>
+            <span
+              v-if="userInfo?.public_repos > 0"
+              class="block text-xs rounded-full px-2 bg-[#2d313a]"
+              >{{ userInfo?.public_repos }}</span
+            >
+          </p>
         </button>
       </li>
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">

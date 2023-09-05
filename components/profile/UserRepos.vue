@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Repo from "./Repo.vue"
+import Repo from "./Repo.vue";
 const config = useRuntimeConfig();
 const props = defineProps({
   username: String,
@@ -9,13 +9,16 @@ const username = computed(() => {
   return props?.username;
 });
 
-const { data: repos, error } = await useMyFetch(`/users/${username?.value}/repos?per_page=8`, {
-  method: "GET",
-  headers: {
-    Authorization: `Bearer ${config.public.NUXT_GITHUB_AUTH_TOKEN}`,
-    Accept: "application/vnd.github.v3+json",
-  },
-});
+const { data: repos, error } = await useMyFetch(
+  `/users/${username?.value}/repos?per_page=8`,
+  {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${config.public.NUXT_GITHUB_AUTH_TOKEN}`,
+      Accept: "application/vnd.github.v3+json",
+    },
+  }
+);
 </script>
 
 <template>

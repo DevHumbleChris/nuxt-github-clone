@@ -1,30 +1,34 @@
 <script setup>
 const props = defineProps({
-    repo: Object
-})
+  repo: Object,
+});
 
 const repo = computed(() => {
-    return props?.repo
-})
+  return props?.repo;
+});
 
-const { data: repoInfo, error } = await getRepoInfo(
-    repo?.value?.full_name
-);
+const { data: repoInfo, error } = await getRepoInfo(repo?.value?.full_name);
 </script>
 
 <template>
   <div class="flex items-center justify-between">
     <div class="flex items-center flex-wrap gap-2">
-      <div class="w-6 h-6 rounded-full border border-gray-600">
+      <NuxtLink
+        :to="repo?.owner?.login"
+        class="w-6 h-6 rounded-full border border-gray-600"
+      >
         <nuxt-img
           :src="repo?.owner?.avatar_url"
           :alt="repo?.owner?.login"
           class="w-full h-full object-cover rounded-full"
         />
-      </div>
-      <NuxtLink to="#" class="block hover:underline text-white">{{
-        repo?.full_name
-      }}</NuxtLink>
+      </NuxtLink>
+      <NuxtLink
+        :to="repo?.html_url"
+        target="_blank"
+        class="block hover:underline text-white"
+        >{{ repo?.full_name }}</NuxtLink
+      >
     </div>
     <button
       class="block bg-[#21262c] border hover:border-gray-300 border-gray-500 rounded-md px-3 py-1"

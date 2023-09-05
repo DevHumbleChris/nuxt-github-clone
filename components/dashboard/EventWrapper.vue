@@ -52,9 +52,17 @@ const setRenderedMarkdown = (markdownText) => {
             />
           </NuxtLink>
           <div class="flex items-center gap-1">
-            <NuxtLink :to="repoInfo?.owner?.login" class="block hover:text-blue-500 text-gray-100">{{ repoInfo?.owner?.login }}</NuxtLink>
+            <NuxtLink
+              :to="repoInfo?.owner?.login"
+              class="block hover:text-blue-500 text-gray-100"
+              >{{ repoInfo?.owner?.login }}</NuxtLink
+            >
             <p>/</p>
-            <NuxtLink :to="repoInfo?.html_url" target="_blank" class="block hover:text-blue-500 text-gray-100">
+            <NuxtLink
+              :to="repoInfo?.html_url"
+              target="_blank"
+              class="block hover:text-blue-500 text-gray-100"
+            >
               {{ getUserRepo(userEvents?.repo?.name) }}
             </NuxtLink>
           </div>
@@ -98,9 +106,17 @@ const setRenderedMarkdown = (markdownText) => {
             />
           </NuxtLink>
           <div class="flex items-center gap-1">
-            <NuxtLink :to="userEvents?.actor?.login" class="hover:text-blue-500 text-gray-100">{{ userEvents?.actor?.login }}</NuxtLink>
+            <NuxtLink
+              :to="userEvents?.actor?.login"
+              class="hover:text-blue-500 text-gray-100"
+              >{{ userEvents?.actor?.login }}</NuxtLink
+            >
             <p>/</p>
-            <NuxtLink :to="repoInfo?.html_url" target="_blank" class="hover:text-blue-500 text-gray-100">
+            <NuxtLink
+              :to="repoInfo?.html_url"
+              target="_blank"
+              class="hover:text-blue-500 text-gray-100"
+            >
               {{ getUserRepo(userEvents?.repo?.name) }}
             </NuxtLink>
           </div>
@@ -139,7 +155,10 @@ const setRenderedMarkdown = (markdownText) => {
     <div v-else-if="eventType === 'starred'" class="space-y-2">
       <div class="flex items-center flex-wrap gap-3 justify-between">
         <div class="flex items-center gap-2">
-          <NuxtLink :to="repoInfo?.owner?.login" class="w-4 h-4 border rounded-full border-gray-600">
+          <NuxtLink
+            :to="repoInfo?.owner?.login"
+            class="w-4 h-4 border rounded-full border-gray-600"
+          >
             <nuxt-img
               :src="
                 repoInfo?.owner?.avatar_url || userEvents?.actor?.avatar_url
@@ -149,9 +168,17 @@ const setRenderedMarkdown = (markdownText) => {
             />
           </NuxtLink>
           <div class="flex items-center gap-1">
-            <NuxtLink :to="repoInfo?.owner?.login" class="block hover:text-blue-500 text-gray-100">{{ repoInfo?.owner?.login }}</NuxtLink>
+            <NuxtLink
+              :to="repoInfo?.owner?.login"
+              class="block hover:text-blue-500 text-gray-100"
+              >{{ repoInfo?.owner?.login }}</NuxtLink
+            >
             <p>/</p>
-            <NuxtLink :to="repoInfo?.html_url" target="_blank" class="block hover:text-blue-500 text-gray-100">
+            <NuxtLink
+              :to="repoInfo?.html_url"
+              target="_blank"
+              class="block hover:text-blue-500 text-gray-100"
+            >
               {{ getUserRepo(userEvents?.repo?.name) }}
             </NuxtLink>
           </div>
@@ -187,7 +214,10 @@ const setRenderedMarkdown = (markdownText) => {
     <div v-else-if="eventType === 'released'" class="space-y-2">
       <div class="flex items-center flex-wrap gap-3 justify-between">
         <div class="flex items-center gap-2">
-          <NuxtLink :to="repoInfo?.owner?.login" class="w-4 h-4 border rounded-full border-gray-600">
+          <NuxtLink
+            :to="repoInfo?.owner?.login"
+            class="w-4 h-4 border rounded-full border-gray-600"
+          >
             <nuxt-img
               :src="
                 repoInfo?.owner?.avatar_url || userEvents?.actor?.avatar_url
@@ -197,9 +227,17 @@ const setRenderedMarkdown = (markdownText) => {
             />
           </NuxtLink>
           <div class="flex items-center gap-1">
-            <NuxtLink :to="repoInfo?.owner?.login" class="block hover:text-blue-500 text-gray-100">{{ repoInfo?.owner?.login }}</NuxtLink>
+            <NuxtLink
+              :to="repoInfo?.owner?.login"
+              class="block hover:text-blue-500 text-gray-100"
+              >{{ repoInfo?.owner?.login }}</NuxtLink
+            >
             <p>/</p>
-            <NuxtLink :to="repoInfo?.html_url" target="_blank" class="block hover:text-blue-500 text-gray-100">
+            <NuxtLink
+              :to="repoInfo?.html_url"
+              target="_blank"
+              class="block hover:text-blue-500 text-gray-100"
+            >
               {{ getUserRepo(userEvents?.repo?.name) }}
             </NuxtLink>
           </div>
@@ -242,7 +280,10 @@ const setRenderedMarkdown = (markdownText) => {
     <div v-else-if="eventType === 'added'" class="space-y-2">
       <div class="flex items-center flex-wrap gap-3 justify-between">
         <div class="flex items-center gap-2">
-          <NuxtLink :to="repoInfo?.owner?.login" class="w-4 h-4 border rounded-full border-gray-600">
+          <NuxtLink
+            :to="repoInfo?.owner?.login"
+            class="w-4 h-4 border rounded-full border-gray-600"
+          >
             <nuxt-img
               :src="
                 repoInfo?.owner?.avatar_url || userEvents?.actor?.avatar_url
@@ -252,9 +293,17 @@ const setRenderedMarkdown = (markdownText) => {
             />
           </NuxtLink>
           <div class="flex items-center gap-1">
-            <NuxtLink :to="repoInfo?.owner?.login" class="block hover:text-blue-500 text-gray-100">{{ repoInfo?.owner?.login }}</NuxtLink>
+            <NuxtLink
+              :to="repoInfo?.owner?.login"
+              class="block hover:text-blue-500 text-gray-100"
+              >{{ repoInfo?.owner?.login }}</NuxtLink
+            >
             <p>/</p>
-            <NuxtLink :to="repoInfo?.html_url" target="_blank" class="block hover:text-blue-500 text-gray-100">
+            <NuxtLink
+              :to="repoInfo?.html_url"
+              target="_blank"
+              class="block hover:text-blue-500 text-gray-100"
+            >
               {{ getUserRepo(userEvents?.repo?.name) }}
             </NuxtLink>
           </div>

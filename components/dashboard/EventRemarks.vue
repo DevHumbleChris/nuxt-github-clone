@@ -20,7 +20,7 @@ const { data: repoInfo } = await getRepoInfo(userEvent?.value?.repo?.name);
     target="_blank"
     :to="repoInfo?.html_url"
     v-if="eventType === 'starred'"
-    class="block text-gray-100"
+    class="block text-gray-100 hover:text-blue-500"
   >
     {{ userEvent?.repo?.name }}
   </NuxtLink>
@@ -32,7 +32,7 @@ const { data: repoInfo } = await getRepoInfo(userEvent?.value?.repo?.name);
     target="_blank"
     :to="repoInfo?.html_url"
     v-else-if="eventType === 'forked'"
-    class="text-gray-100"
+    class="text-gray-100 hover:text-blue-500"
   >
     {{ userEvent?.repo?.name }}
   </NuxtLink>
@@ -40,7 +40,7 @@ const { data: repoInfo } = await getRepoInfo(userEvent?.value?.repo?.name);
     :to="userEvent?.payload?.member?.login"
     target="_blank"
     v-else-if="eventType === 'added'"
-    class="text-gray-100"
+    class="text-gray-100 hover:text-blue-500"
   >
     {{ userEvent?.payload?.member?.login }}
     <span class="text-gray-500">as a collaborator</span>
