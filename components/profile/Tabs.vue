@@ -10,7 +10,7 @@ const userInfo = computed(() => {
 
 <template>
   <div class="bg-[#010409] px-5 py-1 border-b border-gray-800 shadow-xl">
-    <ul class="flex items-center gap-2 text-sm">
+    <ul class="flex items-center overflow-auto gap-2 text-sm">
       <li class="hover:bg-gray-800 p-2 hover:rounded-md">
         <button class="flex items-center gap-2">
           <Icon name="octicon:book-24" class="w-4 h-auto text-[#5f656e]" />
