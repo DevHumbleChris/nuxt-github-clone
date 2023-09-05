@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import UserRepos from './UserRepos.vue'
 const props = defineProps({
   userInfo: Object,
 });
@@ -10,8 +11,8 @@ const userInfo = computed(() => {
 
 <template>
   <section class="bg-light-dark">
-    <div class="grid grid-cols-8 text-sm">
-        <div class="col-span-2 p-5 space-y-3 text-gray-200">
+    <div class="grid grid-cols-1 sm:grid-cols-8 text-sm">
+        <div class="sm:col-span-2 p-5 space-y-3 text-gray-200">
             <div class="max-w-64 xl:w-64 h-auto mx-auto rounded-full border-2 border-gray-400 shadow">
                 <nuxt-img :src="userInfo?.avatar_url" :alt="userInfo?.login" class="w-full h-full object-cover rounded-full" />
             </div>
@@ -34,25 +35,25 @@ const userInfo = computed(() => {
               </NuxtLink>
             </div>
             <div class="space-y-2">
-              <div class="flex items-center gap-2">
+              <div v-if="userInfo?.company" class="flex items-center gap-2">
                 <Icon name="octicon:organization-24" class="w-4 h-auto text-gray-400"/>
                 <p class="text-gray-100">{{ userInfo?.company }}</p>
               </div>
-              <div class="flex items-center gap-2">
+              <div v-if="userInfo?.location" class="flex items-center gap-2">
                 <Icon name="octicon:location-24" class="w-4 h-auto text-gray-400"/>
                 <p class="text-gray-100">{{ userInfo?.location }}</p>
               </div>
-              <div class="flex items-center gap-2">
+              <div v-if="userInfo?.blog" class="flex items-center gap-2">
                 <Icon name="octicon:link-24" class="w-4 h-auto text-gray-400"/>
                 <NuxtLink :to="userInfo?.blog" class="block hover:text-blue-500 text-gray-100">{{ userInfo?.blog }}</NuxtLink>
               </div>
-              <div class="flex items-center gap-2">
+              <div v-if="userInfo?.twitter_username" class="flex items-center gap-2">
                 <Icon name="uim:twitter" class="w-4 h-auto text-gray-400"/>
                 <NuxtLink :to="'https://x.com/' + userInfo?.twitter_username" class="block hover:text-blue-500 text-gray-100">@{{ userInfo?.twitter_username }}</NuxtLink>
               </div>
             </div>
         </div>
-        <div class="col-span-6 bg-blue-400 p-5">hello</div>
+        <UserRepos :username="userInfo?.login" />
     </div>
   </section>
 </template>

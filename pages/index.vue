@@ -2,7 +2,7 @@
 import Sidebar from '~/components/dashboard/Sidebar.vue'
 import Events from '~/components/dashboard/Events.vue';
 import ExploreRepos from '~/components/dashboard/ExploreRepos.vue';
-definePageMeta({
+useHead({
     title: 'Dashboard'
 })
 </script>

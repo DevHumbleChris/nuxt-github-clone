@@ -7,8 +7,7 @@ const usernameParams = computed(() => {
   return currentRoute?.value?.params?.username;
 });
 
-const { data: userInfo, error } = await getUserInfo(usernameParams?.value);
-console.log(userInfo);
+const { data: userInfo } = await getUserInfo(usernameParams?.value);
 
 useHead({
   title: `${usernameParams.value} (${userInfo?.name})`,

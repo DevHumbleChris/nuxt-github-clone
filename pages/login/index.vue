@@ -13,7 +13,6 @@ const { signIn } = useAuth();
 const loginWithGithub = async (): Promise<void> => {
   try {
     const data = await signIn("github", { callbackUrl: "/" });
-    console.log(data);
   } catch (err) {
     console.log(err);
   }
