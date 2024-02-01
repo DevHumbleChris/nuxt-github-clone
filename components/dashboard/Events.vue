@@ -12,7 +12,7 @@ const { data: userEvents } = useAsyncData("events", async () => {
       Accept: "application/vnd.github.v3+json",
     },
   });
-
+  console.log(data);
   return data?.value;
 });
 
@@ -78,7 +78,11 @@ const getEventType = (userEvent: string) => {
               />
             </NuxtLink>
             <div class="flex items-center flex-wrap gap-1">
-              <NuxtLink :to="'/' + event?.actor?.login" class="block hover:text-blue-600 text-gray-100">{{ event?.actor?.login }}</NuxtLink>
+              <NuxtLink
+                :to="'/' + event?.actor?.login"
+                class="block hover:text-blue-600 text-gray-100"
+                >{{ event?.actor?.login }}</NuxtLink
+              >
               <div class="flex items-center gap-1">
                 <p>
                   {{ getEventType(event?.type) }}
