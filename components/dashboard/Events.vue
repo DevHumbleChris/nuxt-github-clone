@@ -3,16 +3,15 @@ import EventRemarks from "./EventRemarks.vue";
 import EventWrapper from "./EventWrapper.vue";
 const config = useRuntimeConfig();
 const { username } = await getUsername();
+console.log(username, "Username");
 const selectedMainEvent = useState("selectedMainEvent", () => "for you");
 const { data: userEvents } = useAsyncData("events", async () => {
   const { data } = await useMyFetch(`/users/${username}/received_events`, {
-    method: "GET",
     headers: {
       Authorization: `Bearer ${config.public.NUXT_GITHUB_AUTH_TOKEN}`,
       Accept: "application/vnd.github.v3+json",
     },
   });
-  console.log(data);
   return data?.value;
 });
 

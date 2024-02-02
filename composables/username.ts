@@ -1,4 +1,3 @@
-
 export const getUsername = async () => {
   const { image } = user();
   const config = useRuntimeConfig();
@@ -8,17 +7,17 @@ export const getUsername = async () => {
   const userId = secSplit[secSplit.length - 1];
 
   const { data, error } = await useMyFetch(`user/${userId}`, {
-    method: "GET",
+    method: "get",
     headers: {
       Authorization: `Bearer ${config.public.NUXT_GITHUB_AUTH_TOKEN}`,
       Accept: "application/vnd.github.v3+json",
     },
   });
 
-  const username: string = data?.value?.login
+  const username: string = data?.value?.login;
 
   return {
     username,
-    error: error?.value
-  }
+    error: error?.value,
+  };
 };
