@@ -12,7 +12,7 @@ const username = computed(() => {
 const { data: repos, error } = await useMyFetch(
   `/users/${username?.value}/repos?per_page=8`,
   {
-    method: "GET",
+    method: "get",
     headers: {
       Authorization: `Bearer ${config.public.NUXT_GITHUB_AUTH_TOKEN}`,
       Accept: "application/vnd.github.v3+json",

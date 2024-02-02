@@ -10,7 +10,7 @@ const { data: repos, refresh } = useAsyncData("repos", async () => {
   const { data } = await useMyFetch(
     `/users/${username}/repos?per_page=${perPageFetch?.value}&sort=created`,
     {
-      method: "GET",
+      method: "get",
       headers: {
         Authorization: `Bearer ${config.public.NUXT_GITHUB_AUTH_TOKEN}`,
         Accept: "application/vnd.github.v3+json",
@@ -64,9 +64,13 @@ const showMore = () => {
             :key="repo?.id"
             :to="repo?.html_url"
             class="flex w-full hover:bg-gray-800 p-2 hover:rounded-md items-center gap-2 hover:underline text-gray-200"
+            target="_blank"
           >
             <div class="w-5 h-5 bg-gray-700 rounded-full">
-              <nuxt-img :src="image" class="w-full h-full object-cover" />
+              <nuxt-img
+                :src="image"
+                class="w-full h-full object-cover rounded-full"
+              />
             </div>
             <p>{{ repo?.owner?.login }}/{{ repo?.name }}</p>
           </NuxtLink>

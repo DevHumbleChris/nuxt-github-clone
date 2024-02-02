@@ -35,7 +35,11 @@ const userInfo = computed(() => {
         </div>
         <p>{{ userInfo?.bio }}</p>
         <div class="flex items-center gap-2">
-          <NuxtLink to="#" class="block flex items-center gap-1 group">
+          <NuxtLink
+            to="#"
+            class="block flex items-center gap-1 group"
+            target="_blank"
+          >
             <Icon
               name="octicon:people-24"
               class="w-4 h-auto group-hover:text-blue-500"
@@ -85,6 +89,7 @@ const userInfo = computed(() => {
             <NuxtLink
               :to="'https://x.com/' + userInfo?.twitter_username"
               class="block hover:text-blue-500 text-gray-100"
+              target="_blank"
               >@{{ userInfo?.twitter_username }}</NuxtLink
             >
           </div>

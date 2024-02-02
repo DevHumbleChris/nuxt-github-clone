@@ -15,7 +15,7 @@ const { data: repoInfo, error } = await getRepoInfo(repo?.value?.full_name);
     <div class="flex items-center flex-wrap gap-2">
       <NuxtLink
         :to="repo?.owner?.login"
-        class="w-6 h-6 rounded-full border border-gray-600"
+        class="w-6 h-6 rounded-full border border-gray-600 rounded-full"
       >
         <nuxt-img
           :src="repo?.owner?.avatar_url"

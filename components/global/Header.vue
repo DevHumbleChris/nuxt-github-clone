@@ -7,8 +7,8 @@ const fullPath = computed(() => {
 });
 
 const usernameParams = computed(() => {
-  return currentRoute?.value?.params?.username
-})
+  return currentRoute?.value?.params?.username;
+});
 
 const menuStore = useMenuStore();
 const { image: userImage } = user();
@@ -28,7 +28,7 @@ const setRouteInfo = (pathInfo: string) => {
     case "/new":
       return "New repository";
     case `/${usernameParams?.value}`:
-      return `${usernameParams?.value}`
+      return `${usernameParams?.value}`;
     default:
       return "";
   }
@@ -113,7 +113,10 @@ const setRouteInfo = (pathInfo: string) => {
           @click="openRightSidebarMenu"
           class="block border border-gray-700 px-1 py-[2px] rounded-full border-gray-500 hover:border-gray-300 hover:bg-gray-800 rounded-full w-8 h-8"
         >
-          <nuxt-img :src="userImage" class="w-full h-full object-cover" />
+          <nuxt-img
+            :src="userImage"
+            class="w-full h-full object-cover rounded-full"
+          />
         </button>
       </div>
     </div>
